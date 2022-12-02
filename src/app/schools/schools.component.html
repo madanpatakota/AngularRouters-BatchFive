@@ -1,1 +1,28 @@
-<p>schools works!</p>
+
+<div style="margin:20px">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Rating</th>
+      <th>CityName</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let item of schoolList">
+        <td>{{item.ID}}</td>
+        <td>{{item.Name}}</td>
+        <td>{{item.Location}}</td>
+        <td>{{item.Rating}}</td>
+        <td>{{item.CityName}}</td>
+        <td><a style="color:blue" routerLinkActive="active" 
+          [routerLink]="['/schooldetails',item.ID]" 
+          class="nav-item nav-link">More</a></td>
+        <!-- <li><a routerLinkActive="active" routerLink="schooldetails" class="nav-item nav-link">SchoolDetails</a></li> -->
+      </tr> 
+  </tbody>
+</table>
+</div>

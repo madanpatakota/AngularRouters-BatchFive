@@ -19,11 +19,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Main   MainComponent
 // Schools SchoolsComponent
-
+//http://localhost:4200/schooldetails
 const AppRoutes: Routes = [
+  { path: '', component: MainComponent },
   { path: 'main', component: MainComponent },
   { path: 'schools', component: SchoolsComponent },
-  { path: 'schooldetails', component: SchoolDetailsComponent },
+  { path: 'schooldetails/:ID', component: SchoolDetailsComponent },
 ];
 
 @NgModule({
