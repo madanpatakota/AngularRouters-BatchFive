@@ -18,11 +18,33 @@
         <td>{{item.Location}}</td>
         <td>{{item.Rating}}</td>
         <td>{{item.CityName}}</td>
-        <td><a style="color:blue" routerLinkActive="active" 
+
+
+
+        <!-- through the html  -->
+        <!-- <td><a style="color:blue" routerLinkActive="active" 
           [routerLink]="['/schooldetails',item.ID]" 
-          class="nav-item nav-link">More</a></td>
+          class="nav-item nav-link">More</a></td> -->
         <!-- <li><a routerLinkActive="active" routerLink="schooldetails" class="nav-item nav-link">SchoolDetails</a></li> -->
+        <!-- <td><a style="color:blue" routerLinkActive="active" 
+          [routerLink]="['/schooldetails']"
+          [queryParams]="{SID : item.ID}" 
+          class="nav-item nav-link">More</a></td> -->
+          <!-- <td><a style="color:blue" routerLinkActive="active" 
+            [routerLink]="['/schooldetails']"
+            [fragment]="item.ID" 
+            class="nav-item nav-link">More</a></td> -->
+
+            <!-- through the event -->
+            <td><a style="color:blue;cursor: pointer;"  
+               routerLinkActive="active" 
+              (click)="evtNavigation(item.ID)" 
+              class="nav-item nav-link">More</a></td> 
       </tr> 
   </tbody>
 </table>
 </div>
+
+<!-- <router-outlet></router-outlet> -->
+
+
