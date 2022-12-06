@@ -1,25 +1,22 @@
-
-<div style="margin:20px">
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Location</th>
-      <th>Rating</th>
-      <th>CityName</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<div style="margin: 20px">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Rating</th>
+        <th>CityName</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
       <tr *ngFor="let item of schoolList">
-        <td>{{item.ID}}</td>
-        <td>{{item.Name}}</td>
-        <td>{{item.Location}}</td>
-        <td>{{item.Rating}}</td>
-        <td>{{item.CityName}}</td>
-
-
+        <td>{{ item.ID }}</td>
+        <td>{{ item.Name }}</td>
+        <td>{{ item.Location }}</td>
+        <td>{{ item.Rating }}</td>
+        <td>{{ item.CityName }}</td>
 
         <!-- through the html  -->
         <!-- <td><a style="color:blue" routerLinkActive="active" 
@@ -30,21 +27,28 @@
           [routerLink]="['/schooldetails']"
           [queryParams]="{SID : item.ID}" 
           class="nav-item nav-link">More</a></td> -->
-          <!-- <td><a style="color:blue" routerLinkActive="active" 
+        <!-- <td><a style="color:blue" routerLinkActive="active" 
             [routerLink]="['/schooldetails']"
             [fragment]="item.ID" 
             class="nav-item nav-link">More</a></td> -->
 
-            <!-- through the event -->
-            <td><a style="color:blue;cursor: pointer;"  
-               routerLinkActive="active" 
-              (click)="evtNavigation(item.ID)" 
-              class="nav-item nav-link">More</a></td> 
-      </tr> 
-  </tbody>
-</table>
+        <!-- through the event -->
+        <td>
+          <a
+            style="color: blue; cursor: pointer"
+            (click)="evtNavigation(item.ID)"
+            >More</a
+          >
+          |
+          <a
+            style="color: green; cursor: pointer"
+            (click)="evtHistoryNavigation(item.ID)"
+            >History</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-<!-- <router-outlet></router-outlet> -->
-
-
+<router-outlet></router-outlet>

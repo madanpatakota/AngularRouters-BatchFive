@@ -16,10 +16,19 @@ export class SchoolsComponent implements OnInit {
       this.schoolList = this._serviceServce.schoolsList;
   }
 
+
+  //localhost:4200/schooldetails
+
   evtNavigation(id:any){
      //this.router.navigate(['/schooldetails',id]);
      //this.router.navigate(['/schooldetails'] , { queryParams : {SID : id}});
      this.router.navigate(['/schooldetails'] , { fragment : id});
+  }
+
+
+  //localhost:4200/schools/schoolhistory
+  evtHistoryNavigation(id:any){
+    this.router.navigate(['schools/schoolhistory'],  { fragment : id});
   }
 
 }

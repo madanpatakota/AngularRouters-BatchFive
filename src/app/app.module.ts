@@ -8,6 +8,9 @@ import { SchoolDetailsComponent } from './school-details/school-details.componen
 
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SchoolHistoryComponent } from './schools/school-history/school-history.component';
+import { CanActiveGuard } from './can-active.guard';
+import { LoginComponent } from './login/login.component';
 
 // http://localhost:4200/Main   ---> Maincomponent
 // http://localhost:4200/Schools   ---> Schoolscomponent
@@ -31,12 +34,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 
 //https://github.com/madanpatakota#repositories
+
+//http://localhost:4200/schools/schoolhistory
 const AppRoutes: Routes = [
-  { path: '', component: MainComponent },
+  { path: '', component: LoginComponent },
   { path: 'main', component: MainComponent },
-  { path: 'schools', component: SchoolsComponent },
+  { path: 'schools', component: SchoolsComponent ,
+     children  : [  { path: 'schoolhistory', component: SchoolHistoryComponent } ] },
   // { path: 'schooldetails/:ID', component: SchoolDetailsComponent },
-  { path: 'schooldetails', component: SchoolDetailsComponent },
+  { path: 'schooldetails', component: SchoolDetailsComponent , canActivate: [ CanActiveGuard ] },
   //{ path : 'schooldetails123' , component : NotFoundComponent}
   { path : 'not-found' , component : NotFoundComponent},
   { path:'**' , redirectTo:'not-found'}
