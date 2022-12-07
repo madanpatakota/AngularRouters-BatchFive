@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from '../school.service';
-import { Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'app-schools',
@@ -9,11 +9,18 @@ import { Router } from '@angular/router'
 })
 export class SchoolsComponent implements OnInit {
 
-  constructor(private _serviceServce:SchoolService , private router : Router) { }
+  constructor(private _serviceServce:SchoolService , private router : Router , private activateRoute : ActivatedRoute) { }
 
   schoolList:any = [];
   ngOnInit(): void {
       this.schoolList = this._serviceServce.schoolsList;
+
+
+      this.activateRoute.data.subscribe((response)=>{
+        console.log("******************",response);
+      })
+
+
   }
 
 
@@ -30,5 +37,9 @@ export class SchoolsComponent implements OnInit {
   evtHistoryNavigation(id:any){
     this.router.navigate(['schools/schoolhistory'],  { fragment : id});
   }
+
+  
+
+
 
 }

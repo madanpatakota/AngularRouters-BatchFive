@@ -11,6 +11,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SchoolHistoryComponent } from './schools/school-history/school-history.component';
 import { CanActiveGuard } from './can-active.guard';
 import { LoginComponent } from './login/login.component';
+import { CandeactivateGuard } from './candeactivate.guard';
+import { SchoolResolver } from './school.resolver';
 
 // http://localhost:4200/Main   ---> Maincomponent
 // http://localhost:4200/Schools   ---> Schoolscomponent
@@ -25,13 +27,10 @@ import { LoginComponent } from './login/login.component';
 // Schools SchoolsComponent
 //http://localhost:4200/schooldetails
 
-
 //http://localhost:4200/schooldetails/School-1       // param
 //http://localhost:4200/schooldetails?ID=School-1    //queryparam
 
-
 //https://github.com/madanpatakota?tab=repositories
-
 
 //https://github.com/madanpatakota#repositories
 
@@ -39,13 +38,30 @@ import { LoginComponent } from './login/login.component';
 const AppRoutes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'main', component: MainComponent },
-  { path: 'schools', component: SchoolsComponent ,
-     children  : [  { path: 'schoolhistory', component: SchoolHistoryComponent } ] },
+  {
+    path: 'schools',
+    component: SchoolsComponent,
+    resolve : [SchoolResolver],
+    children: [{ 
+      path: 'schoolhistory', 
+      component: SchoolHistoryComponent,
+      canActivateChild : []
+      }],
+  },
   // { path: 'schooldetails/:ID', component: SchoolDetailsComponent },
-  { path: 'schooldetails', component: SchoolDetailsComponent , canActivate: [ CanActiveGuard ] },
+  {
+    path: 'schooldetails',
+    component: SchoolDetailsComponent,
+    canActivate: [CanActiveGuard],
+    canDeactivate:[CandeactivateGuard]
+  },
   //{ path : 'schooldetails123' , component : NotFoundComponent}
-  { path : 'not-found' , component : NotFoundComponent},
-  { path:'**' , redirectTo:'not-found'}
+  { 
+    path: 'not-found',
+    component: NotFoundComponent , 
+    data : [ { messageName : "401 Not found page" }] },
+
+   { path: '**', redirectTo: 'not-found' },
 ];
 
 @NgModule({

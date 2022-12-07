@@ -41,4 +41,17 @@ export class SchoolDetailsComponent implements OnInit {
 
 
   }
+
+
+  
+  evtUpdateUserEmail(){
+    localStorage.setItem('email', 'enduser@gmail.com');
+  }
+
+  evtUpdateUserEmailtoAdmin(){
+    localStorage.setItem('email', 'admin@gmail.com');
+  }
+
+
+
 }

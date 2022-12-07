@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { EVENT_MANAGER_PLUGINS } from '@angular/platform-browser';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SchoolService {
@@ -35,6 +37,7 @@ export class SchoolService {
       CityName: 'Bangolore',
       StateName: 'Karnataka',
       isGood: true,
+      EmailID : "kidgee@gmail.com"
     },
     {
       SchoolID: 'School-2',
@@ -43,6 +46,7 @@ export class SchoolService {
       EstablishDate: 2000,
       CityName: 'Bangolore',
       StateName: 'Karnataka',
+      EmailID : "EuroKids@gmail.com"
     },
     {
       SchoolID: 'School-3',
@@ -51,6 +55,13 @@ export class SchoolService {
       EstablishDate: 1995,
       CityName: 'Bangolore',
       StateName: 'Karnataka',
+      EmailID : "DelhiPublicSchool@gmail.com"
     },
   ];
+
+
+
+  subject = new Subject();
+
+
 }
