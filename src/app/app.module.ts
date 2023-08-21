@@ -13,7 +13,7 @@ import { CanActiveGuard } from './can-active.guard';
 import { LoginComponent } from './login/login.component';
 import { CandeactivateGuard } from './candeactivate.guard';
 import { SchoolResolver } from './school.resolver';
-
+ 
 // http://localhost:4200/Main   ---> Maincomponent
 // http://localhost:4200/Schools   ---> Schoolscomponent
 // http://localhost:4200/SchoolDetails   ---> SchoolDetailscomponent
@@ -36,32 +36,35 @@ import { SchoolResolver } from './school.resolver';
 
 //http://localhost:4200/schools/schoolhistory
 const AppRoutes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'main', component: MainComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'main', component:  MainComponent },
   {
     path: 'schools',
     component: SchoolsComponent,
-    resolve : [SchoolResolver],
-    children: [{ 
-      path: 'schoolhistory', 
-      component: SchoolHistoryComponent,
-      canActivateChild : []
-      }],
+    resolve: [SchoolResolver],
+    children: [
+      {
+        path: 'schoolhistory',
+        component: SchoolHistoryComponent,
+        canActivateChild: [],
+      },
+    ],
   },
   // { path: 'schooldetails/:ID', component: SchoolDetailsComponent },
   {
     path: 'schooldetails',
     component: SchoolDetailsComponent,
     canActivate: [CanActiveGuard],
-    canDeactivate:[CandeactivateGuard]
+    canDeactivate: [CandeactivateGuard],
   },
   //{ path : 'schooldetails123' , component : NotFoundComponent}
-  { 
+  {
     path: 'not-found',
-    component: NotFoundComponent , 
-    data : [ { messageName : "401 Not found page" }] },
-
-   { path: '**', redirectTo: 'not-found' },
+    component: NotFoundComponent,
+    data: [{ messageName: '401 Not found page' }],
+  },
+  { path: '', redirectTo: 'login' , pathMatch:'full' },
+  { path: '**', redirectTo: 'not-found' },
 ];
 
 @NgModule({

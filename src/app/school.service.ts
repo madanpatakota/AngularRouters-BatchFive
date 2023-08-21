@@ -61,7 +61,7 @@ export class SchoolService {
 
 
 
-  subject = new Subject();
+  subject = new EventEmitter();
 
 
 }

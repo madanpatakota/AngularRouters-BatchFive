@@ -24,9 +24,10 @@ export class LoginComponent implements OnInit {
 
     localStorage.setItem('email',this._email.nativeElement.value);
     localStorage.setItem('password', this._password.nativeElement.value);
+  
 
-    //this.schoolService.subject.next(true);
-    this.router.navigate(['main']);
+    this.schoolService.subject.next(true);
+    
 
 
   }

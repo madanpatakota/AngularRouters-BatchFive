@@ -1,40 +1,26 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AfterViewInit, Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SchoolService } from './school.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'AngularRouters-BatchFive';
 
-  constructor(private activateRoute:ActivatedRoute , private schoolservice : SchoolService){
-
-  }
+  constructor(private router: Router, private schoolservice: SchoolService) {}
 
   isMainPage = false;
 
-  ngOnint(){
-    // let emailValue = localStorage.getItem("email");   /// xyz@gamil.com
-
-    // console.log(emailValue);
-
-    // if(emailValue){
-    //    this.isMainPage = true;
-    // }
-    // else{
-    //   this.isMainPage = false;
-    // }
-
-    this.schoolservice.subject.subscribe((value)=>{
-        if(value){
-          this.isMainPage = true;
-        }
-    })
-
-    
-
+  ngAfterViewInit() {
+    console.log("triggered");
+    this.schoolservice.subject.subscribe((value) => {
+      if (value) {
+        this.isMainPage = true;
+        this.router.navigate(['main']);
+      }
+    });
   }
 }
